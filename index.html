@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0d1424" />
+  <meta name="description" content="Inventario SISCO del Estrés Académico — formulario Zero." />
+  <title>Zero | Inventario SISCO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <header class="site-header">
+    <a href="#" class="brand" aria-label="Zero">
+      <span class="logo-window">
+        <img src="assets/zero-logo.png" alt="Zero" class="logo-image">
+      </span>
+    </a>
+    <span class="secure-pill">● Formulario confidencial</span>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">Evaluación académica</div>
+      <h1>Inventario SISCO del<br><span>Estrés Académico</span></h1>
+      <p>
+        Este cuestionario busca reconocer las características del estrés que puede
+        acompañar a los estudiantes durante sus estudios. La información se tratará
+        de forma confidencial y se analizará únicamente de manera global.
+      </p>
+      <div class="hero-meta">
+        <span>31 ítems</span>
+        <span>5–8 min aprox.</span>
+        <span>Participación voluntaria</span>
+      </div>
+    </section>
+
+    <section class="form-card" id="formCard">
+      <div class="progress-wrap" aria-label="Progreso">
+        <div class="progress-top">
+          <span id="stepLabel">Paso 1 de 7</span>
+          <span id="progressPercent">14%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <form id="siscoForm" novalidate>
+        <!-- PASO 1 -->
+        <section class="step active" data-step="1">
+          <div class="section-kicker">Antes de comenzar</div>
+          <h2>Datos generales</h2>
+          <p class="section-lead">Estos datos no forman parte de los 31 ítems del instrumento.</p>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>Edad <b>*</b></span>
+              <input type="number" name="edad" min="10" max="99" inputmode="numeric" placeholder="Ej. 16" required>
+            </label>
+
+            <label class="field">
+              <span>Sexo <b>*</b></span>
+              <select name="sexo" required>
+                <option value="">Selecciona una opción</option>
+                <option>Femenino</option>
+                <option>Masculino</option>
+                <option>Prefiero no responder</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Grado <b>*</b></span>
+              <input type="text" name="grado" placeholder="Ej. 5.º de secundaria" required>
+            </label>
+
+            <label class="field">
+              <span>Sección <b>*</b></span>
+              <input type="text" name="seccion" placeholder="Ej. A" required>
+            </label>
+          </div>
+
+          <div class="privacy-note">
+            <div class="privacy-icon">i</div>
+            <div><strong>Confidencialidad.</strong> Responde con sinceridad. No hay respuestas correctas o incorrectas.</div>
+          </div>
+        </section>
+
+        <!-- PASO 2 -->
+        <section class="step" data-step="2">
+          <div class="section-kicker">Pregunta filtro</div>
+          <h2>Experiencia reciente</h2>
+          <p class="section-lead">Selecciona la opción que mejor represente tu experiencia durante este semestre.</p>
+
+          <fieldset class="question-block filter-question" data-required-group="p1">
+            <legend><span class="q-number">1</span> Durante el transcurso de este semestre ¿has tenido momentos de preocupación o nerviosismo?</legend>
+            <div class="choice-cards two">
+              <label class="choice-card">
+                <input type="radio" name="p1" value="Sí" required>
+                <span class="choice-ui"><strong>Sí</strong><small>Continuar con el cuestionario</small></span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="p1" value="No" required>
+                <span class="choice-ui"><strong>No</strong><small>Finalizar el cuestionario</small></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="question-block" id="p2Block">
+            <legend><span class="q-number">2</span> Con la idea de obtener mayor precisión y utilizando una escala del 1 al 5, señala tu nivel de preocupación o nerviosismo.</legend>
+            <div class="scale-labels"><span>1 · Poco</span><span>5 · Mucho</span></div>
+            <div class="scale-five" data-name="p2"></div>
+          </fieldset>
+        </section>
+
+        <!-- PASO 3 -->
+        <section class="step" data-step="3">
+          <div class="section-kicker">Ítems 3–10</div>
+          <h2>Estresores</h2>
+          <p class="section-lead">Señala con qué frecuencia te inquietaron las siguientes situaciones.</p>
+          <div class="scale-key">
+            <span><b>1</b>Nunca</span><span><b>2</b>Rara vez</span><span><b>3</b>Algunas veces</span><span><b>4</b>Casi siempre</span><span><b>5</b>Siempre</span>
+          </div>
+          <div id="estresores"></div>
+
+          <div class="other-card">
+            <label class="field">
+              <span>Otra situación (opcional)</span>
+              <input type="text" name="otra_estresor" placeholder="Especifica otra situación">
+            </label>
+            <div class="mini-scale" data-name="otra_estresor_frecuencia" data-optional="true"></div>
+          </div>
+        </section>
+
+        <!-- PASO 4 -->
+        <section class="step" data-step="4">
+          <div class="section-kicker">Ítems 11–16</div>
+          <h2>Reacciones físicas</h2>
+          <p class="section-lead">Indica con qué frecuencia tuviste estas reacciones cuando estabas preocupado o nervioso.</p>
+          <div class="scale-key compact">
+            <span><b>1</b>Nunca</span><span><b>2</b>Rara vez</span><span><b>3</b>Algunas veces</span><span><b>4</b>Casi siempre</span><span><b>5</b>Siempre</span>
+          </div>
+          <div id="fisicas"></div>
+        </section>
+
+        <!-- PASO 5 -->
+        <section class="step" data-step="5">
+          <div class="section-kicker">Ítems 17–21</div>
+          <h2>Reacciones psicológicas</h2>
+          <p class="section-lead">Indica con qué frecuencia tuviste estas reacciones cuando estabas preocupado o nervioso.</p>
+          <div class="scale-key compact">
+            <span><b>1</b>Nunca</span><span><b>2</b>Rara vez</span><span><b>3</b>Algunas veces</span><span><b>4</b>Casi siempre</span><span><b>5</b>Siempre</span>
+          </div>
+          <div id="psicologicas"></div>
+        </section>
+
+        <!-- PASO 6 -->
+        <section class="step" data-step="6">
+          <div class="section-kicker">Ítems 22–25</div>
+          <h2>Reacciones comportamentales</h2>
+          <p class="section-lead">Indica con qué frecuencia tuviste estas reacciones cuando estabas preocupado o nervioso.</p>
+          <div class="scale-key compact">
+            <span><b>1</b>Nunca</span><span><b>2</b>Rara vez</span><span><b>3</b>Algunas veces</span><span><b>4</b>Casi siempre</span><span><b>5</b>Siempre</span>
+          </div>
+          <div id="comportamentales"></div>
+
+          <div class="other-card">
+            <label class="field">
+              <span>Otra reacción (opcional)</span>
+              <input type="text" name="otra_reaccion" placeholder="Especifica otra reacción">
+            </label>
+            <div class="mini-scale" data-name="otra_reaccion_frecuencia" data-optional="true"></div>
+          </div>
+        </section>
+
+        <!-- PASO 7 -->
+        <section class="step" data-step="7">
+          <div class="section-kicker">Ítems 26–31</div>
+          <h2>Estrategias de afrontamiento</h2>
+          <p class="section-lead">Indica con qué frecuencia utilizaste las siguientes estrategias para enfrentar la situación que te causaba preocupación o nerviosismo.</p>
+          <div class="scale-key compact">
+            <span><b>1</b>Nunca</span><span><b>2</b>Rara vez</span><span><b>3</b>Algunas veces</span><span><b>4</b>Casi siempre</span><span><b>5</b>Siempre</span>
+          </div>
+          <div id="afrontamiento"></div>
+
+          <div class="other-card">
+            <label class="field">
+              <span>Otra estrategia (opcional)</span>
+              <input type="text" name="otra_estrategia" placeholder="Especifica otra estrategia">
+            </label>
+            <div class="mini-scale" data-name="otra_estrategia_frecuencia" data-optional="true"></div>
+          </div>
+
+          <div class="consent-box">
+            <label>
+              <input type="checkbox" name="confirmacion" required>
+              <span>Confirmo que he respondido el cuestionario de manera voluntaria.</span>
+            </label>
+          </div>
+        </section>
+
+        <div class="form-error" id="formError" role="alert" aria-live="polite"></div>
+
+        <div class="nav-row">
+          <button type="button" class="btn btn-ghost" id="prevBtn">← Anterior</button>
+          <button type="button" class="btn btn-primary" id="nextBtn">Continuar →</button>
+          <button type="submit" class="btn btn-primary hidden" id="submitBtn">Enviar respuestas</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="success-card hidden" id="successCard">
+      <div class="success-icon">✓</div>
+      <div class="eyebrow">Registro completado</div>
+      <h2>Gracias por tu participación</h2>
+      <p id="successText">Tus respuestas fueron registradas correctamente.</p>
+      <button class="btn btn-primary" id="restartBtn" type="button">Nueva respuesta</button>
+    </section>
+
+    <footer>
+      <span>ZERO</span>
+      <span>·</span>
+      <span>Inventario SISCO</span>
+      <span>·</span>
+      <span>Uso académico</span>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
